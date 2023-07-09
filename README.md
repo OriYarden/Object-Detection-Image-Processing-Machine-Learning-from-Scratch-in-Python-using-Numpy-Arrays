@@ -156,7 +156,7 @@ Below I included the entire class and its methods:
             if object_shape == 'T':
                 _image[30 + row_col_position[0]:38 + row_col_position[0], 30 + row_col_position[1]:70 + row_col_position[1], :] = object_color
                 _image[38 + row_col_position[0]:75 + row_col_position[0], 45 + row_col_position[1]:55 + row_col_position[1], :] = object_color
-            if object_shape == '!':
+            if object_shape == '|':
                 _image[30 + row_col_position[0]:75 + row_col_position[0], 45 + row_col_position[1]:55 + row_col_position[1], :] = object_color
             if object_shape == '-':
                 _image[50 + row_col_position[0]:55 + row_col_position[0], 40 + row_col_position[1]:60 + row_col_position[1], :] = object_color
@@ -299,7 +299,7 @@ Below I included the entire class and its methods:
     #training_image2 = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_training_image2.png', 'rb'))
     #test_image = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_test_image.png', 'rb'))
 
-    nn = NN(object_shapes=['H', 'H', 'T', 'T', '!', 'H', 'H', '-'], object_colors=[[1.0, 0.0, 0.0], [1.0, 0.5, 0.0], [0.0, 1.0, 0.5], [0.25, 0.0, 1.0], [0.25, 1.0, 1.0], [1.0, 1.0, 1.0], [0.0, 0.0, 1.0], [1.0, 1.0, 1.0]])
+    nn = NN(object_shapes=['H', 'H', 'T', 'T', '|', 'H', 'H', '-'], object_colors=[[1.0, 0.0, 0.0], [1.0, 0.5, 0.0], [0.0, 1.0, 0.5], [0.25, 0.0, 1.0], [0.25, 1.0, 1.0], [1.0, 1.0, 1.0], [0.0, 0.0, 1.0], [1.0, 1.0, 1.0]])
     #nn = NN(training_images=[training_image1])
     nn.plot_image()
     nn.plot_weights()
