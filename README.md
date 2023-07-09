@@ -287,7 +287,7 @@ Below I included the entire class and its methods:
 
         def plot_weights(self, iteration=None):
             if iteration is None:
-                iteration = 0 if not self.__dict__.__contains__("training_errors") else len(self.weights_over_training_iterations) - 1
+                iteration = len(self.weights_over_training_iterations) - 1
             fig = plt.figure(figsize=(10, 5))
             ax = plt.subplot(1, 1, 1)
             plt.imshow(np.sum(np.reshape(self.weights_over_training_iterations[str(iteration)], [self.image_size, self.image_size, self.rgb_dim]), axis=2))
