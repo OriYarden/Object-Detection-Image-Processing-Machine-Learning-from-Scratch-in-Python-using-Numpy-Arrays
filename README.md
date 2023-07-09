@@ -14,9 +14,7 @@ We can flatten the image rows-columns wise and make a weights matrix for image p
 in Python by generating a numpy two-dimensional array of random numbers in which the image rows and columns are flattened into the first dimension with rgb colors for the second dimension in the weights matrix:
 
     def init_weights(self):
-        _weights = np.reshape(self.add_noise(self.rgb_dim*self.image_size**2), [self.image_size**2, self.rgb_dim])
-        self.weights_over_training_iterations = {'0': _weights}
-        return _weights
+        return np.reshape(self.add_noise(self.rgb_dim*self.image_size**2), [self.image_size**2, self.rgb_dim])
 
 
 Training the neural network weights on the following images of different object shapes and colors:
@@ -24,7 +22,7 @@ Training the neural network weights on the following images of different object 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/992fd9a0-3e67-4dbf-aed7-0e3ab622cbfc)
 
 
-by iterating through our list of training images and adjusting our weights matrix by the difference between each image and the product of the image and weights passed through an activation function (and we add a bit of noise into the input layer for zest):
+by iterating through our list of training images and adjusting our weights matrix by the difference between each image and the product of the image and weights passed through an activation function (and we add a bit of noise into the input layer for science):
 
 
     def train(self, iterations=None, new_weights=False, learning_rate=1.0):
@@ -46,7 +44,7 @@ Here are the weights before training which are initially random:
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/efd6c12b-1123-4e02-bded-50f835d5884f)
 
 
-After training our neural network for 100 iterations per image:
+After training our neural network for 100 iterations per image for each of the eight training images:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/2feef399-9eef-4441-8acd-ce277abe3f94)
 
@@ -89,7 +87,7 @@ By calculating the errors separately for the rgb color dimensions, the neural ne
 
 
 
-Though this neural network is fairly simple, potential applications for using machine learning models to train weights matrixes for image processing and object detection and tracking are wide ranging. For example, suppose we wanted to find and detect an enemy military tank located in an image fed directly from the battle field to inform friendly nearby soldiers:
+Though this neural network is fairly simple, potential applications for using machine learning models to train weights matrixes for image processing and object detection and tracking are wide ranging. For example, suppose we wanted to find and detect where an enemy military tank is located in an image fed directly from the battle field to inform nearby friendly soldiers:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/3d201afd-6db2-4f6c-9d12-17374ef6406e)
 
@@ -103,7 +101,7 @@ Here is our weights matrix after 1,000 training iterations:
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/164735cb-4357-4a09-80fd-edc396581985)
 
 
-Here is the real world where we expect our neural network to find and detect the tank from the training image:
+Here is the real world test image where we expect our neural network to find and detect the tank and its exact location from the training image:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/59d861e7-414f-4955-a83f-0f24229eb319)
 
@@ -112,6 +110,7 @@ And here is the neural network detecting the location of the tank in the image:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/0b7ece2f-f07b-4e60-bedc-b6c1374761fb)
 
+And this is what the sample of the world multiplied by our weights matrix looks like (pretty similar to the original training images, right? Even with the background included in the sample):
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/800ab412-5f1e-4327-ad5a-542f52bda1d9)
 
@@ -181,7 +180,7 @@ Below I included the entire class and its methods:
         def init_weights(self):
             _weights = np.reshape(self.add_noise(self.rgb_dim*self.image_size**2), [self.image_size**2, self.rgb_dim])
             self.weights_over_training_iterations = {'0': _weights}
-                return _weights
+            return _weights
 
         def train(self, iterations=None, new_weights=False, learning_rate=1.0):
             if new_weights:
@@ -247,14 +246,14 @@ Below I included the entire class and its methods:
             _title = f'''
             Sample of World at [{image_row_col[0]}, {image_row_col[1]}]
             Multiplied by Weights'''
-            self.plot_image(_image=match_image_to_sample.copy(), _title=_title, _uint8=True)
+            self.plot_image(_image=match_image_to_sample.copy(), _title=_title, normalize_rgb=True)
             _title = f'''
             Object from Image #{found_image_num + 1}
             Detected in World at [{image_row_col[0]}, {image_row_col[1]}]'''
             self.plot_image(_image=world.copy(), _title=_title, outline_image_row_col=image_row_col, outline_color=outline_color)
             self.plot_image(_image=self.training_images[str(found_image_num)], _title=f'Object #{found_image_num + 1}')
 
-        def plot_image(self, _image=None, _title=None, _uint8=False, outline_image_row_col=None, outline_color=None):
+        def plot_image(self, _image=None, _title=None, normalize_rgb=False, outline_image_row_col=None, outline_color=None):
             plot_image = self.training_images.copy() if _image is None else _image
             if isinstance(plot_image, dict):
                 fig = plt.figure(figsize=(15 if len(self.training_images) > 3 else 10, 5))
@@ -280,7 +279,7 @@ Below I included the entire class and its methods:
                     for col in range(outline_image_row_col[1], outline_image_row_col[1] + self.image_size):
                         plot_image[outline_image_row_col[0], col, :] = outline_color
                         plot_image[outline_image_row_col[0] + self.image_size, col, :] = outline_color
-                plt.imshow(plot_image if not _uint8 else self.normalize_rgb_values(plot_image))
+                plt.imshow(plot_image if not normalize_rgb else self.normalize_rgb_values(plot_image))
                 ax.set_title('Image' if _title is None else _title, fontsize=15, fontweight='bold')
                 ax.axis('off')
             plt.show()
@@ -295,10 +294,10 @@ Below I included the entire class and its methods:
             ax.axis('off')
             plt.show()
 
-    from PIL import Image
-    training_image1 = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_training_image1.png', 'rb'))
-    training_image2 = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_training_image2.png', 'rb'))
-    test_image = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_test_image.png', 'rb'))
+    #from PIL import Image
+    #training_image1 = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_training_image1.png', 'rb'))
+    #training_image2 = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_training_image2.png', 'rb'))
+    #test_image = Image.open(open('/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/IMAGES/tank_test_image.png', 'rb'))
 
     nn = NN(object_shapes=['H', 'H', 'T', 'T', '!', 'H', 'H', '-'], object_colors=[[1.0, 0.0, 0.0], [1.0, 0.5, 0.0], [0.0, 1.0, 0.5], [0.25, 0.0, 1.0], [0.25, 1.0, 1.0], [1.0, 1.0, 1.0], [0.0, 0.0, 1.0], [1.0, 1.0, 1.0]])
     #nn = NN(training_images=[training_image1])
@@ -310,3 +309,5 @@ Below I included the entire class and its methods:
     nn.test()
     #nn.test(test_image=test_image, outline_color=np.array([1.0, 0.0, 0.0]))
 
+
+Although this object detection machine learning image processing example is simple, it is still at least a bit impressive that the tank can be identified by the neural network while not only being camouflaged (as opposed to the simulated images with the distinct black background in the test image) but also surrounded by other tanks in the image. The Python Neural Network class I provided above works on both simulated and real world images for object detection training and testing, and I included the ipynb (colab notebook) file and the tank training and testing images as png files in this repository so check it out!
