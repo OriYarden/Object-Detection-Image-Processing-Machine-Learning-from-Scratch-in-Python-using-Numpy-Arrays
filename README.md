@@ -103,7 +103,7 @@ Here is our weights matrix after 1,000 training iterations:
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/fc802ab5-fdde-4522-93b8-c0268d22a63a)
 
 
-Here is the real world where we expect our neural network to find and detect the tank from training image:
+Here is the real world where we expect our neural network to find and detect the tank from the training image:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/59d861e7-414f-4955-a83f-0f24229eb319)
 
