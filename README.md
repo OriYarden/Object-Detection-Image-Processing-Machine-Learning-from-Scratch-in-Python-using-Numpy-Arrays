@@ -1,5 +1,5 @@
 # Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays
-Detecting objects from a set of training images by shape and color using machine learning in Python from scratch (only numpy arrays).
+Detecting objects from a set of training images by shape and color using machine learning in Python from scratch (doing all the math on only numpy arrays, no machine learning packages used).
 
 
 ![Picture1](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/6ec38814-ec3e-4090-ae70-d6b797d7e55d)
