@@ -100,7 +100,7 @@ Here is our initially random weights matrix before training it on the training i
 
 Here is our weights matrix after 1,000 training iterations:
 
-![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/fc802ab5-fdde-4522-93b8-c0268d22a63a)
+![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/164735cb-4357-4a09-80fd-edc396581985)
 
 
 Here is the real world where we expect our neural network to find and detect the tank from the training image:
