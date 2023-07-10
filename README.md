@@ -53,7 +53,7 @@ We can see that the weights matrix learned the eight images, and now we can test
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/90cecc4b-14c6-4427-9f11-f77683b62239)
 
-multiplying the sample of the world by the weights matrix and finding the maximum difference after subtracting that from the sample and from the training images:
+multiplying the sample of the world by the weights matrix and finding the maximum (or minimum) difference after subtracting that from the sample and from the training images:
 
 
     def test(self, world_size=3, new_weights=False):
