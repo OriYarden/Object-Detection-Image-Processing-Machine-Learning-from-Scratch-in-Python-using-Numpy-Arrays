@@ -25,7 +25,7 @@ Training the neural network weights on the following images of different object 
 by iterating through our list of training images and adjusting our weights matrix by the difference between each image and the product of the image and weights passed through an activation function (and we add a bit of noise into the input layer for science):
 
 
-    def train(self, iterations=None, new_weights=False, learning_rate=1.0):
+    def train(self, iterations, new_weights=False, learning_rate=1.0):
         if new_weights:
             self.weights = self.init_weights()
 
@@ -182,7 +182,7 @@ Below I included the entire class and its methods:
             self.weights_over_training_iterations = {'0': _weights}
             return _weights
 
-        def train(self, iterations=None, new_weights=False, learning_rate=1.0):
+        def train(self, iterations, new_weights=False, learning_rate=1.0):
             if new_weights:
                 self.weights = self.init_weights()
 
