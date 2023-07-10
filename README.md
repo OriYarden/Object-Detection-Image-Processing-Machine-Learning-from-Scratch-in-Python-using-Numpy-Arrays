@@ -114,6 +114,26 @@ And this is what the sample of the world multiplied by our weights matrix looks 
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/800ab412-5f1e-4327-ad5a-542f52bda1d9)
 
+Training the neural network on a different tank image:
+
+![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/04ec5348-b2f9-4215-9cc7-33a63d2a76a2)
+
+Weights before training:
+
+![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/8e118bbf-df2b-4c4f-8437-afd484dc9e8d)
+
+Weights after training:
+
+![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/8aca6551-d678-4f62-9191-011deeb021c2)
+
+
+And testing it on a real world image:
+
+![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/9fe3dfe3-438c-4f27-815b-aa623794daa7)
+
+![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/c4f2422c-64ba-44ab-9b77-72112a978b52)
+
+![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/4e672e6e-e624-4e47-9bf3-546d6db1b0e0)
 
 
 Below I included the entire class and its methods:
@@ -310,4 +330,4 @@ Below I included the entire class and its methods:
     #nn.test(test_image=test_image, outline_color=np.array([1.0, 0.0, 0.0]))
 
 
-Although this object detection machine learning image processing example is simple, it is still at least a bit impressive that the tank can be identified by the neural network while not only being camouflaged (as opposed to the simulated images with the distinct black background in the test image) but also surrounded by other tanks in the image. The Python Neural Network class I provided above works on both simulated and real world images for object detection training and testing, and I included the ipynb (colab notebook) file and the tank training and testing images as png files in this repository so check it out!
+Although this object detection machine learning image processing example is simple, it is still at least a bit impressive that the tank can be identified by the neural network while not only being camouflaged (as the tanks match the background with similar colors or rgb values opposed to the simulated images with the distinct black background in the test image) but also surrounded by other tanks in the image. The Python Neural Network class I provided above works on both simulated and real world images for object detection training and testing, and I included the ipynb (colab notebook) file and the tank training and testing images as png files in this repository so check it out!
