@@ -110,11 +110,11 @@ And here is the neural network detecting the location of the tank in the image:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/0b7ece2f-f07b-4e60-bedc-b6c1374761fb)
 
-And this is what the sample of the world multiplied by our weights matrix looks like (pretty similar to the original training images, right? Even with the background included in the sample):
+And this is what the sample of the world multiplied by our weights matrix looks like:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/800ab412-5f1e-4327-ad5a-542f52bda1d9)
 
-Training the neural network on a different tank image:
+Let's use a new neural network weights matrix and train it on a different tank image:
 
 ![image](https://github.com/OriYarden/Object-Detection-Image-Processing-Machine-Learning-from-Scratch-in-Python-using-Numpy-Arrays/assets/137197657/04ec5348-b2f9-4215-9cc7-33a63d2a76a2)
 
