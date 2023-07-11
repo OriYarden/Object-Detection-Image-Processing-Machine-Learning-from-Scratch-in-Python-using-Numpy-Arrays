@@ -254,7 +254,7 @@ Below I included the entire class and its methods:
                         rgb_errors[row, col, int(image_num)] = np.sum([np.sum(np.sum(abs(image - np.reshape(match_image_to_sample, [self.image_size, self.image_size, self.rgb_dim])), axis=_axis)) for _axis in range(2)])
 
             if self.object_shapes is None:
-                max_abs_error_row_col = [[np.where(errors[:, :, int(image_num)] == np.min(errors[:, :, int(image_num)]))[0][0], np.where(errors[:, :, int(image_num)] == np.min(errors[:, :, int(image_num)]))[1][0]] for image_num, image in self.training_images.items()][0]
+                found_image_row_col = [[np.where(errors[:, :, int(image_num)] == np.min(errors[:, :, int(image_num)]))[0][0], np.where(errors[:, :, int(image_num)] == np.min(errors[:, :, int(image_num)]))[1][0]] for image_num, image in self.training_images.items()][0]
             else:
                 found_image_row_col = [[np.where(errors[:, :, int(image_num)] == np.max(errors[:, :, int(image_num)]))[0][0], np.where(errors[:, :, int(image_num)] == np.max(errors[:, :, int(image_num)]))[1][0]] for image_num, image in self.training_images.items()][0]
             found_image_num = np.where(rgb_errors[found_image_row_col[0], found_image_row_col[1], :] == np.min(rgb_errors[found_image_row_col[0], found_image_row_col[1], :]))[0][0]
