@@ -256,21 +256,20 @@ Below I included the entire class and its methods:
             if self.object_shapes is None:
                 max_abs_error_row_col = [[np.where(errors[:, :, int(image_num)] == np.min(errors[:, :, int(image_num)]))[0][0], np.where(errors[:, :, int(image_num)] == np.min(errors[:, :, int(image_num)]))[1][0]] for image_num, image in self.training_images.items()][0]
             else:
-                max_abs_error_row_col = [[np.where(errors[:, :, int(image_num)] == np.max(errors[:, :, int(image_num)]))[0][0], np.where(errors[:, :, int(image_num)] == np.max(errors[:, :, int(image_num)]))[1][0]] for image_num, image in self.training_images.items()][0]
-            image_row_col = [max_abs_error_row_col[0], max_abs_error_row_col[1]]
-            found_image_num = np.where(rgb_errors[image_row_col[0], image_row_col[1], :] == np.min(rgb_errors[image_row_col[0], image_row_col[1], :]))[0][0]
+                found_image_row_col = [[np.where(errors[:, :, int(image_num)] == np.max(errors[:, :, int(image_num)]))[0][0], np.where(errors[:, :, int(image_num)] == np.max(errors[:, :, int(image_num)]))[1][0]] for image_num, image in self.training_images.items()][0]
+            found_image_num = np.where(rgb_errors[found_image_row_col[0], found_image_row_col[1], :] == np.min(rgb_errors[found_image_row_col[0], found_image_row_col[1], :]))[0][0]
 
-            sample_of_world = world[image_row_col[0]:image_row_col[0] + self.image_size, image_row_col[1]:image_row_col[1] + self.image_size, :]
-            self.plot_image(_image=sample_of_world, _title=f'Sample of World at [{image_row_col[0]}, {image_row_col[1]}]')
+            sample_of_world = world[found_image_row_col[0]:found_image_row_col[0] + self.image_size, found_image_row_col[1]:found_image_row_col[1] + self.image_size, :]
+            self.plot_image(_image=sample_of_world, _title=f'Sample of World at [{found_image_row_col[0]}, {found_image_row_col[1]}]')
             match_image_to_sample = np.reshape(self.weights, [self.image_size, self.image_size, self.rgb_dim])*sample_of_world
             _title = f'''
-            Sample of World at [{image_row_col[0]}, {image_row_col[1]}]
+            Sample of World at [{found_image_row_col[0]}, {found_image_row_col[1]}]
             Multiplied by Weights'''
             self.plot_image(_image=match_image_to_sample.copy(), _title=_title, normalize_rgb=True)
             _title = f'''
             Object from Image #{found_image_num + 1}
-            Detected in World at [{image_row_col[0]}, {image_row_col[1]}]'''
-            self.plot_image(_image=world.copy(), _title=_title, outline_image_row_col=image_row_col, outline_color=outline_color)
+            Detected in World at [{found_image_row_col[0]}, {found_image_row_col[1]}]'''
+            self.plot_image(_image=world.copy(), _title=_title, outline_image_row_col=found_image_row_col, outline_color=outline_color)
             self.plot_image(_image=self.training_images[str(found_image_num)], _title=f'Object #{found_image_num + 1}')
 
         def plot_image(self, _image=None, _title=None, normalize_rgb=False, outline_image_row_col=None, outline_color=None):
